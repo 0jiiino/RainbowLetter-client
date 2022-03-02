@@ -36,4 +36,16 @@ const postSignUp = async (userInfo) => {
   return await response.json();
 };
 
-export { postCertification, postVerification, postSignUp };
+const postLogin = async (loginInfo) => {
+  const response = await fetch(`${SERVER_URI}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginInfo),
+  });
+
+  return await response.json();
+};
+
+export { postCertification, postVerification, postSignUp, postLogin };
