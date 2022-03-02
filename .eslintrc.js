@@ -30,6 +30,8 @@ module.exports = {
     "no-return-await": "off",
     "import/prefer-default-export": "off",
     "consistent-return": "off",
+    "no-param-reassign": "off",
+    "import/no-extraneous-dependencies": "off",
   },
   globals: {
     fetch: false,
