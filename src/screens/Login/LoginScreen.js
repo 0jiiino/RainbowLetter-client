@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
 import * as SecureStore from "expo-secure-store";
+
 import { postLogin } from "../../../api/authApi";
-import Input from "../../components/TextInput/TextInput";
-import { SERVER_ERROR, WINDOW_WIDTH } from "../../constants";
 import { userSlice } from "../../../redux/userSlice";
+import { SERVER_ERROR, WINDOW_WIDTH } from "../../constants";
+import Input from "../../components/TextInput/TextInput";
 
 const Login = () => {
   const dispatch = useDispatch();
