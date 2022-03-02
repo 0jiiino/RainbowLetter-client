@@ -152,6 +152,8 @@ const SignUp = ({ navigation }) => {
           title="회원가입"
           onPress={handleSignUpClick}
           disabled={successMessage === ""}
+          color="#C7C5A7"
+          style={styles.signUpButton}
         />
       </View>
     </View>
@@ -176,16 +178,15 @@ const styles = StyleSheet.create({
     height: 30,
     padding: 4,
     marginLeft: 10,
-    borderRadius: 10,
     backgroundColor: "#C7C5A7",
     fontSize: 10,
   },
-  signUpbutton: {
+  signUpButton: {
     width: WINDOW_WIDTH * 0.22,
     height: 30,
     padding: 4,
+    borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: "#C7C5A7",
     fontSize: 10,
   },
   signUpContainer: {
