@@ -9,7 +9,7 @@ import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants";
 
 const Main = ({ navigation }) => {
   const handleLoginClick = () => {
-    // navigation.navigate(Login);
+    navigation.navigate("Login");
   };
 
   const handleSignUpClick = () => {
