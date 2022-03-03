@@ -32,6 +32,9 @@ module.exports = {
     "consistent-return": "off",
     "no-param-reassign": "off",
     "import/no-extraneous-dependencies": "off",
+    "react/no-unstable-nested-components": "off",
+    "no-unused-vars": "off",
+    "react/jsx-no-useless-fragment": "off",
   },
   globals: {
     fetch: false,

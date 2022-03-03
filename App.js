@@ -1,13 +1,13 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import AuthNavigation from "./src/Navigations/AuthNavigation";
 import store from "./redux/store";
+import FirstNavigation from "./src/Navigations/FirstNavigation";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <AuthNavigation />
+      <FirstNavigation />
     </Provider>
   );
 };

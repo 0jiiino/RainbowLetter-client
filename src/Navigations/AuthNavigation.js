@@ -1,11 +1,11 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
-import Login from "../screens/Login/LoginScreen";
 
-import Main from "../screens/Main/MainScreen";
-import SignUp from "../screens/SignUp/SignUpScreen";
-import Success from "../screens/SignUp/SuccessScreen";
+import Login from "../screens/Auth/LoginScreen";
+import Main from "../screens/Auth/FirstScreen";
+import SignUp from "../screens/Auth/SignUpScreen";
+import Success from "../screens/Auth/SuccessScreen";
 
 const Stack = createStackNavigator();
 
