@@ -5,7 +5,7 @@ import login from "../../../assets/Images/login.png";
 import signUp from "../../../assets/Images/signUp.png";
 import rainbow from "../../../assets/Images/rainbow.png";
 import AuthButton from "../../components/Buttons/AuthButton";
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants/constants";
 
 const Main = ({ navigation }) => {
   const handleLoginClick = () => {

@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import rainbow from "../../../assets/Images/rainbow.png";
 import login from "../../../assets/Images/login.png";
 import AuthButton from "../../components/Buttons/AuthButton";
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants/constants";
 
 const Success = ({ navigation }) => {
   const handleLoginClick = () => {

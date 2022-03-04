@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants/constants";
 
 const Input = ({
   placeholder,

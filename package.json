@@ -11,7 +11,8 @@
     "format": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "rndebugger-open"
   },
   "lint-staged": {
     "*.{js, css}": [
@@ -38,6 +39,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-debugger-open": "^0.3.25",
     "react-native-dotenv": "^3.3.1",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-web": "0.17.1",

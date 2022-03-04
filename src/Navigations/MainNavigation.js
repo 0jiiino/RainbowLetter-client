@@ -9,6 +9,8 @@ import MyMailBox from "../screens/Main/MyMailBox/MyMailBoxScreen";
 import MyPage from "../screens/Main/MyPageScreen";
 import NewAngel from "../screens/Main/MyMailBox/NewAngelScreen";
 import Angel from "../screens/Main/MyMailBox/AngelScreen";
+import LetterList from "../screens/Main/MyMailBox/LetterListScreen";
+import Letter from "../screens/Main/MyMailBox/LetterScreen";
 
 const Tab = createBottomTabNavigator();
 const OurMailBoxStack = createStackNavigator();
@@ -67,6 +69,34 @@ const MyMailBoxStackNavigator = () => (
       <MyMailBoxStack.Screen
         name="Angel"
         component={Angel}
+        options={{
+          title: "🌈 내 편지함",
+          headerStyle: {
+            backgroundColor: "#FFFDDD",
+          },
+          headerTintColor: "black",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <MyMailBoxStack.Screen
+        name="LetterList"
+        component={LetterList}
+        options={{
+          title: "🌈 내 편지함",
+          headerStyle: {
+            backgroundColor: "#FFFDDD",
+          },
+          headerTintColor: "black",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <MyMailBoxStack.Screen
+        name="Letter"
+        component={Letter}
         options={{
           title: "🌈 내 편지함",
           headerStyle: {

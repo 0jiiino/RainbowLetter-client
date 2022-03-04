@@ -11,7 +11,7 @@ import {
   SERVER_ERROR,
   VERIFICATION_SUCCESS,
   WINDOW_WIDTH,
-} from "../../constants";
+} from "../../constants/constants";
 import CustomButton from "../../components/Buttons/Button";
 import Input from "../../components/TextInput/TextInput";
 

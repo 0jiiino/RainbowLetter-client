@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../constants/constants";
 
 const AuthButton = ({ source, handleClick }) => {
   return (

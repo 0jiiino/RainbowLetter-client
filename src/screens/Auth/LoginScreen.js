@@ -5,7 +5,7 @@ import * as SecureStore from "expo-secure-store";
 
 import { postLogin } from "../../../api/authApi";
 import { userSlice } from "../../../redux/userSlice";
-import { SERVER_ERROR, WINDOW_WIDTH } from "../../constants";
+import { SERVER_ERROR, WINDOW_WIDTH } from "../../constants/constants";
 import Input from "../../components/TextInput/TextInput";
 
 const Login = () => {

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-import { WINDOW_WIDTH, WINDOW_HEIGHT } from "../../constants";
+import { WINDOW_WIDTH, WINDOW_HEIGHT } from "../../constants/constants";
 
 const Modal = ({
   title,
