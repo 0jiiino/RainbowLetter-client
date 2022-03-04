@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+
 import angelImg from "../../../../assets/Images/angel.png";
 import CircleButton from "../../../components/Buttons/CircleButton";
 import QUESTIONS from "../../../constants/questions";
 import COLORS from "../../../constants/colors";
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../../constants/constants";
+import {
+  KEEPING_MENT,
+  WINDOW_HEIGHT,
+  WINDOW_WIDTH,
+} from "../../../constants/constants";
+import Modal from "../../../components/Modal/Modal";
+import { fetchAngel } from "../../../../redux/userSlice";
 
 const LetterList = () => {
   const navigation = useNavigation();
-  const { angel, letters } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [isClicked, setIsClicked] = useState(false);
+  const { angel, letters, isLoading } = useSelector((state) => state.user);
+  const isDisabled = letters.length !== 7;
 
   const handelCircleClick = (color, index) => {
     if (letters[index]) {
@@ -28,10 +37,30 @@ const LetterList = () => {
     navigation.navigate("Letter", { color, index, question: QUESTIONS[index] });
   };
 
+  const handleKeepClick = () => {
+    setIsClicked(true);
+  };
+
+  const handleCloseClick = () => {
+    setIsClicked(false);
+  };
+
+  const handleConfirmClick = () => {
+    dispatch(fetchAngel(angel.id));
+
+    if (!isLoading) {
+      navigation.navigate("MyMailBox");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={isDisabled ? styles.disabledButton : styles.button}
+          disabled={isDisabled}
+          onPressOut={handleKeepClick}
+        >
           <Text style={styles.buttonText}>보관함에 저장</Text>
         </TouchableOpacity>
       </View>
@@ -84,6 +113,14 @@ const LetterList = () => {
           })}
         </View>
       </View>
+      {isClicked ? (
+        <Modal
+          title="보관함 저장"
+          handleCloseClick={handleCloseClick}
+          handleConfirmClick={handleConfirmClick}
+          content={KEEPING_MENT}
+        />
+      ) : null}
     </View>
   );
 };
@@ -98,6 +135,16 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
+  },
+  disabledButton: {
+    width: WINDOW_WIDTH / 4,
+    height: WINDOW_HEIGHT / 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 10,
+    borderRadius: 10,
+    backgroundColor: "#C7C5A7",
+    opacity: 0.3,
   },
   button: {
     width: WINDOW_WIDTH / 4,
