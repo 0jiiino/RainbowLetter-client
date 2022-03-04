@@ -33,3 +33,22 @@ export const getAngelLetters = async (id) => {
 
   return await response.json();
 };
+
+export const patchAngel = async (id) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const activationInfo = { activation: false };
+
+  const response = await fetch(`${SERVER_URI}/users/angels/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: accessToken,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(activationInfo),
+  });
+
+  return await response;
+};
