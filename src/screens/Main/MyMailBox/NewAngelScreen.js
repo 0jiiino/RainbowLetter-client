@@ -53,7 +53,7 @@ const NewAngel = () => {
           placehodler="천사의 이름을 입력하세요"
           handleCloseClick={handleCloseClick}
           handleInputChange={handleInputChange}
-          handleSaveClick={handleSaveClick}
+          handleConfirmClick={handleSaveClick}
           isInputModal={true}
         />
       ) : null}

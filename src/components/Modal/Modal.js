@@ -15,7 +15,7 @@ const Modal = ({
   placehodler,
   handleCloseClick,
   handleInputChange,
-  handleSaveClick,
+  handleConfirmClick,
   isInputModal = false,
   content,
 }) => {
@@ -42,7 +42,10 @@ const Modal = ({
           ) : (
             <Text style={styles.text}>{content}</Text>
           )}
-          <TouchableOpacity style={styles.saveButton} onPress={handleSaveClick}>
+          <TouchableOpacity
+            style={styles.saveButton}
+            onPress={handleConfirmClick}
+          >
             <Text style={styles.save}>확인</Text>
           </TouchableOpacity>
         </View>
@@ -100,6 +103,7 @@ const styles = StyleSheet.create({
   text: {
     width: WINDOW_WIDTH * 0.6,
     margin: 20,
+    textAlign: "center",
   },
   saveButton: {
     justifyContent: "center",
