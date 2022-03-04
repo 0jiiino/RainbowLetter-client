@@ -17,3 +17,19 @@ export const postNewAngel = async (creationInfo) => {
 
   return await response.json();
 };
+
+export const getAngelLetters = async (id) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const response = await fetch(`${SERVER_URI}/angels/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: accessToken,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return await response.json();
+};
