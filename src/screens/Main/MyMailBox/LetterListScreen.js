@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 import angelImg from "../../../../assets/Images/angel.png";
+import { fetchAngel } from "../../../../redux/userSlice";
 import CircleButton from "../../../components/Buttons/CircleButton";
+import Modal from "../../../components/Modal/Modal";
 import QUESTIONS from "../../../constants/questions";
 import COLORS from "../../../constants/colors";
 import {
@@ -12,8 +14,6 @@ import {
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../../constants/constants";
-import Modal from "../../../components/Modal/Modal";
-import { fetchAngel } from "../../../../redux/userSlice";
 
 const LetterList = () => {
   const navigation = useNavigation();
