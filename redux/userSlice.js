@@ -1,6 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { getAngelLetters, patchAngel, postNewAngel } from "../api/angelApi";
+import {
+  getAngelLetters,
+  patchAngel,
+  postLetter,
+  postNewAngel,
+} from "../api/angelApi";
 
 export const fetchNewAngel = createAsyncThunk(
   "postNewAngel",
@@ -41,6 +46,23 @@ export const fetchAngel = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await patchAngel(id);
+
+      if (!response.error) {
+        return response;
+      }
+
+      return thunkAPI.rejectWithValue(response);
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchLetter = createAsyncThunk(
+  "postLetter",
+  async (letterInfo, thunkAPI) => {
+    try {
+      const response = await postLetter(letterInfo);
 
       if (!response.error) {
         return response;
@@ -118,6 +140,21 @@ export const userSlice = createSlice({
       state.isLoading = false;
     },
     [fetchAngel.rejected]: (state, { payload }) => {
+      const { error } = payload;
+
+      state.message = error.message;
+      state.isLoading = false;
+    },
+    [fetchLetter.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchLetter.fulfilled]: (state, { payload }) => {
+      const { letter } = payload;
+
+      state.letters.push(letter);
+      state.isLoading = false;
+    },
+    [fetchLetter.rejected]: (state, { payload }) => {
       const { error } = payload;
 
       state.message = error.message;
