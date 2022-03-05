@@ -22,7 +22,7 @@ const LetterList = () => {
   const { angel, letters, isLoading } = useSelector((state) => state.user);
   const isDisabled = letters.length !== 7;
 
-  const handelCircleClick = (color, index) => {
+  const handleCircleClick = (color, index) => {
     if (letters[index]) {
       navigation.navigate("Letter", {
         color,
@@ -76,7 +76,7 @@ const LetterList = () => {
                     key={value}
                     color={value}
                     size={90}
-                    handleClick={() => handelCircleClick(value, index)}
+                    handleClick={() => handleCircleClick(value, index)}
                   />
                 );
               }
@@ -97,7 +97,7 @@ const LetterList = () => {
                   key={value}
                   color={value}
                   size={90}
-                  handleClick={handelCircleClick(value, index)}
+                  handleClick={() => handleCircleClick(value, index)}
                 />
               );
             }

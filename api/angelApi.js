@@ -41,7 +41,7 @@ export const patchAngel = async (id) => {
 
   const activationInfo = { activation: false };
 
-  const response = await fetch(`${SERVER_URI}/users/angels/${id}`, {
+  const response = await fetch(`${SERVER_URI}/angels/${id}`, {
     method: "PATCH",
     headers: {
       Authorization: accessToken,
