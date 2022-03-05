@@ -50,5 +50,22 @@ export const patchAngel = async (id) => {
     body: JSON.stringify(activationInfo),
   });
 
-  return await response;
+  return await response.json();
+};
+
+export const postLetter = async (letterInfo) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const response = await fetch(`${SERVER_URI}/angels/letters`, {
+    method: "POST",
+    headers: {
+      Authorization: accessToken,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(letterInfo),
+  });
+
+  return await response.json();
 };
