@@ -26,7 +26,6 @@ const LetterList = () => {
     if (letters[index]) {
       navigation.navigate("Letter", {
         color,
-        index,
         question: QUESTIONS[index],
         letter: letters[index],
       });
@@ -34,7 +33,7 @@ const LetterList = () => {
       return;
     }
 
-    navigation.navigate("Letter", { color, index, question: QUESTIONS[index] });
+    navigation.navigate("LetterInput", { color, question: QUESTIONS[index] });
   };
 
   const handleKeepClick = () => {
