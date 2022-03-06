@@ -35,6 +35,8 @@ module.exports = {
     "react/no-unstable-nested-components": "off",
     "no-unused-vars": "off",
     "react/jsx-no-useless-fragment": "off",
+    "no-plusplus": "off",
+    "no-underscore-dangle": "off",
   },
   globals: {
     fetch: false,

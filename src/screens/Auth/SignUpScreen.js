@@ -6,12 +6,12 @@ import {
   postSignUp,
   postVerification,
 } from "../../../api/authApi";
-import signUpValidation from "../../../validation/signUpValidation";
 import {
   SERVER_ERROR,
   VERIFICATION_SUCCESS,
   WINDOW_WIDTH,
 } from "../../constants/constants";
+import signUpValidation from "../../validation/signUpValidation";
 import CustomButton from "../../components/Buttons/Button";
 import Input from "../../components/TextInput/TextInput";
 
