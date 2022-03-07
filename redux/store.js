@@ -3,9 +3,11 @@ import { createLogger } from "redux-logger";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { userSlice } from "./userSlice";
+import { echoLetterSlice } from "./echoLetterSlice";
 
 const reducer = {
   user: userSlice.reducer,
+  echoLetter: echoLetterSlice.reducer,
 };
 
 const middleware = [thunk, createLogger()];
