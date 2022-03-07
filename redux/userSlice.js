@@ -3,10 +3,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAngelLetters,
   patchAngel,
-  patchEcho,
   postLetter,
   postNewAngel,
 } from "../api/angelApi";
+import { patchEcho } from "../api/letterApi";
 
 export const fetchNewAngel = createAsyncThunk(
   "postNewAngel",

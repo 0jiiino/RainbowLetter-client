@@ -69,22 +69,3 @@ export const postLetter = async (letterInfo) => {
 
   return await response.json();
 };
-
-export const patchEcho = async (echoInfo) => {
-  const accessToken = (
-    await SecureStore.getItemAsync("accessToken")
-  ).replaceAll('"', "");
-
-  const { echo, id } = echoInfo;
-
-  const response = await fetch(`${SERVER_URI}/letters/${id}/echos`, {
-    method: "PATCH",
-    headers: {
-      Authorization: accessToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ echo }),
-  });
-
-  return await response.json();
-};
