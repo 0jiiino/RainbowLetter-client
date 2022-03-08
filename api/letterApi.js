@@ -35,3 +35,20 @@ export const getEchoLetters = async () => {
 
   return await response.json();
 };
+
+export const putReply = async (id, content) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const response = await fetch(`${SERVER_URI}/letters/${id}/replies`, {
+    method: "PUT",
+    headers: {
+      Authorization: accessToken,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ content }),
+  });
+
+  return await response.json();
+};
