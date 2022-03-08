@@ -10,7 +10,7 @@ const Card = ({ letter, onPress }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text>{creator}</Text>
+        <Text>{creator} 로부터...</Text>
       </View>
       <View style={styles.contentContainer}>
         <Text style={styles.content} ellipsizeMode="tail" numberOfLines={5}>
