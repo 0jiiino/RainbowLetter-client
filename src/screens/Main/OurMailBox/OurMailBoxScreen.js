@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import {
   Text,
@@ -7,12 +8,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchEchoLetters } from "../../../../redux/echoLetterSlice";
 
+import { fetchEchoLetters } from "../../../../redux/echoLetterSlice";
 import Card from "../../../components/Card/Card";
 
 const OurMailBox = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const [isRefreshing, setIsRefreshing] = useState(true);
   const { letters, isLoading } = useSelector((state) => state.echoLetter);
 
@@ -26,7 +28,7 @@ const OurMailBox = () => {
 
   const renderCard = ({ item }) => {
     const onPress = () => {
-      console.log(item._id);
+      navigation.navigate("LetterDetail", { letter: item });
     };
 
     return <Card letter={item} onPress={onPress} />;
