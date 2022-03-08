@@ -13,6 +13,7 @@ import LetterList from "../screens/Main/MyMailBox/LetterListScreen";
 import LetterInput from "../screens/Main/MyMailBox/LetterInputScreen";
 import Letter from "../screens/Main/MyMailBox/LetterScreen";
 import LetterDetail from "../screens/Main/OurMailBox/LetterDetailScreen";
+import Reply from "../screens/Main/OurMailBox/ReplyScreen";
 
 const Tab = createBottomTabNavigator();
 const OurMailBoxStack = createStackNavigator();
@@ -38,6 +39,20 @@ const OurMailBoxStackNavigator = () => (
     <OurMailBoxStack.Screen
       name="LetterDetail"
       component={LetterDetail}
+      options={{
+        title: "🌈 모두의 편지함",
+        headerStyle: {
+          backgroundColor: "#FFFDDD",
+        },
+        headerTintColor: "black",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    />
+    <OurMailBoxStack.Screen
+      name="Reply"
+      component={Reply}
       options={{
         title: "🌈 모두의 편지함",
         headerStyle: {
