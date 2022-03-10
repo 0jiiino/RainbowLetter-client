@@ -17,7 +17,8 @@ const Carousel = ({ data, renderItem }) => {
       }}
       data={data}
       renderItem={renderItem}
-      snapToInterval={pageWidth + gap}
+      pagingEnabled={true}
+      snapToInterval={pageWidth + gap * 2}
       keyExtractor={(item) => (item._id ? item._id : 0)}
     />
   );

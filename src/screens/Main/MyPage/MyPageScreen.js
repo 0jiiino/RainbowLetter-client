@@ -1,10 +1,11 @@
-import { useIsFocused } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   fetchMailboxAngels,
+  fetchMailboxLetters,
   mailboxSlice,
 } from "../../../../redux/mailboxSlice";
 import { deleteAngel } from "../../../../api/angelApi";
@@ -12,15 +13,24 @@ import Angel from "../../../components/Angel/Angel";
 
 const MyPage = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const isFocused = useIsFocused();
   const { id } = useSelector((state) => state.user);
-  const { angels } = useSelector((state) => state.mailbox);
+  const { angels, isLoading } = useSelector((state) => state.mailbox);
 
   useEffect(() => {
     if (!angels.length) {
       dispatch(fetchMailboxAngels(id));
     }
   }, [isFocused]);
+
+  const handleAngelClick = (angelId) => {
+    dispatch(fetchMailboxLetters(angelId));
+
+    if (!isLoading) {
+      navigation.navigate("MailboxLetter", { angelId });
+    }
+  };
 
   const handleDeleteClick = async (angelId, userId) => {
     try {
@@ -39,7 +49,7 @@ const MyPage = () => {
     return (
       <Angel
         name={item.name}
-        handleClick={() => console.log(item.id)}
+        handleClick={() => handleAngelClick(item.id)}
         handleDeleteClick={() => handleDeleteClick(item.id, id)}
       />
     );

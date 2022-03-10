@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import OurMailBox from "../screens/Main/OurMailBox/OurMailBoxScreen";
 import MyMailBox from "../screens/Main/MyMailBox/MyMailBoxScreen";
-import MyPage from "../screens/Main/MyPageScreen";
+import MyPage from "../screens/Main/MyPage/MyPageScreen";
 import NewAngel from "../screens/Main/MyMailBox/NewAngelScreen";
 import Angel from "../screens/Main/MyMailBox/AngelScreen";
 import LetterList from "../screens/Main/MyMailBox/LetterListScreen";
@@ -14,6 +14,7 @@ import LetterInput from "../screens/Main/MyMailBox/LetterInputScreen";
 import Letter from "../screens/Main/MyMailBox/LetterScreen";
 import LetterDetail from "../screens/Main/OurMailBox/LetterDetailScreen";
 import Reply from "../screens/Main/OurMailBox/ReplyScreen";
+import MailboxLetter from "../screens/Main/MyPage/MailboxLetterScreen";
 
 const Tab = createBottomTabNavigator();
 const OurMailBoxStack = createStackNavigator();
@@ -161,6 +162,20 @@ const MyPageStackNavigator = () => (
     <MyPageStack.Screen
       name="MyPage"
       component={MyPage}
+      options={{
+        title: "🌈 마이 페이지",
+        headerStyle: {
+          backgroundColor: "#FFFDDD",
+        },
+        headerTintColor: "black",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    />
+    <MyPageStack.Screen
+      name="MailboxLetter"
+      component={MailboxLetter}
       options={{
         title: "🌈 마이 페이지",
         headerStyle: {
