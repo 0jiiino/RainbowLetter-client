@@ -4,10 +4,12 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { userSlice } from "./userSlice";
 import { echoLetterSlice } from "./echoLetterSlice";
+import { mailboxSlice } from "./mailboxSlice";
 
 const reducer = {
   user: userSlice.reducer,
   echoLetter: echoLetterSlice.reducer,
+  mailbox: mailboxSlice.reducer,
 };
 
 const middleware = [thunk, createLogger()];

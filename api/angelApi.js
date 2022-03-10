@@ -69,3 +69,19 @@ export const postLetter = async (letterInfo) => {
 
   return await response.json();
 };
+
+export const getMailboxAngels = async (id) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const response = await fetch(`${SERVER_URI}/angels/users/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: accessToken,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return await response.json();
+};
