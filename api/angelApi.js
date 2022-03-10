@@ -85,3 +85,22 @@ export const getMailboxAngels = async (id) => {
 
   return await response.json();
 };
+
+export const deleteAngel = async (angelId, userId) => {
+  const accessToken = (
+    await SecureStore.getItemAsync("accessToken")
+  ).replaceAll('"', "");
+
+  const response = await fetch(
+    `${SERVER_URI}/angels/${angelId}/users/${userId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: accessToken,
+        "content-Type": "application/json",
+      },
+    }
+  );
+
+  return await response.json();
+};

@@ -29,7 +29,23 @@ const initialState = {
 export const mailboxSlice = createSlice({
   name: "mailbox",
   initialState,
-  reducers: {},
+  reducers: {
+    delete: (state, action) => {
+      const { angels } = state;
+      const { id } = action.payload;
+
+      for (let i = 0; i < angels.length; i++) {
+        if (angels[i].id === id) {
+          angels.splice(i, 1);
+          break;
+        }
+      }
+
+      state.angels = angels;
+
+      return state;
+    },
+  },
   extraReducers: {
     [fetchMailboxAngels.pending]: (state) => {
       state.isLoading = true;
