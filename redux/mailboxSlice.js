@@ -1,12 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { getMailboxAngels } from "../api/angelApi";
+import { getMailboxAngels, getMailboxLetters } from "../api/angelApi";
 
 export const fetchMailboxAngels = createAsyncThunk(
   "getMailboxAngels",
   async (id, thunkAPI) => {
     try {
       const response = await getMailboxAngels(id);
+
+      if (!response.error) {
+        return response;
+      }
+
+      return thunkAPI.rejectWithValue(response);
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchMailboxLetters = createAsyncThunk(
+  "getMailboxLetters",
+  async (id, thunkAPI) => {
+    try {
+      const response = await getMailboxLetters(id);
 
       if (!response.error) {
         return response;
@@ -54,8 +71,21 @@ export const mailboxSlice = createSlice({
       const { mailboxAngels } = payload;
 
       state.angels = mailboxAngels;
+      state.isLoading = false;
     },
     [fetchMailboxAngels.rejected]: (state) => {
+      state.isLoading = false;
+    },
+    [fetchMailboxLetters.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchMailboxLetters.fulfilled]: (state, { payload }) => {
+      const { letters } = payload;
+
+      state.letters = letters;
+      state.isLoading = false;
+    },
+    [fetchMailboxLetters.rejected]: (state) => {
       state.isLoading = false;
     },
   },
