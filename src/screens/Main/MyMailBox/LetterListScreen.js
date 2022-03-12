@@ -7,8 +7,7 @@ import angelImg from "../../../../assets/Images/angel.png";
 import { fetchAngel } from "../../../../redux/userSlice";
 import CircleButton from "../../../components/Buttons/CircleButton";
 import Modal from "../../../components/Modal/Modal";
-import QUESTIONS from "../../../constants/questions";
-import COLORS from "../../../constants/colors";
+import { QUESTIONS, QUESTION_COLORS } from "../../../constants/questions";
 import {
   KEEPING_MENT,
   WINDOW_HEIGHT,
@@ -67,7 +66,7 @@ const LetterList = () => {
         <Image source={angelImg} style={styles.image} />
         <Text style={styles.text}>Dear. [ {angel.name}🧡 ]</Text>
         <View style={styles.circleContainer}>
-          {COLORS.map((value, index) => {
+          {QUESTION_COLORS.map((value, index) => {
             if (!letters.length) {
               if (index === 0) {
                 return (

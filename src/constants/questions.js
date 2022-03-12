@@ -8,4 +8,14 @@ const QUESTIONS = [
   "그 사람이 없는 세상을 씩씩하게 살아가기 위한\n나만의 다짐을 남겨보세요.",
 ];
 
-export default QUESTIONS;
+const QUESTION_COLORS = [
+  "#FFB6B6",
+  "#F8CB9D",
+  "#F6EF71",
+  "#DBF398",
+  "#ABDEFB",
+  "#B7CDFF",
+  "#B0A7FF",
+];
+
+export { QUESTIONS, QUESTION_COLORS };

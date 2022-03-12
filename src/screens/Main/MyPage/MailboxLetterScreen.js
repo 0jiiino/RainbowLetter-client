@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import Carousel from "../../../components/Carousel/Carousel";
 import ColorLetter from "../../../components/Letter/ColorLetter";
-import COLORS from "../../../constants/colors";
+import { QUESTION_COLORS } from "../../../constants/questions";
 
 const MailboxLetter = () => {
   const { letters } = useSelector((state) => state.mailbox);
@@ -19,7 +19,7 @@ const MailboxLetter = () => {
         break;
       }
     }
-    const color = COLORS[index];
+    const color = QUESTION_COLORS[index];
 
     return <ColorLetter letter={item} color={color} />;
   };
