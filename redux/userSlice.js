@@ -182,7 +182,6 @@ export const userSlice = createSlice({
       state.isLoading = true;
     },
     [fetchEcho.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       const { id, echo } = payload;
 
       for (let i = 0; i < state.letters.length; i++) {

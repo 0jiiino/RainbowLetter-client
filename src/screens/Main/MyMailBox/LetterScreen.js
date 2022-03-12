@@ -28,7 +28,7 @@ const Letter = ({ route }) => {
     return () => clearTimeout(timer);
   }, [echo]);
 
-  useDidMountEffect(requestServer, finalEcho);
+  useDidMountEffect(requestServer, [finalEcho]);
 
   return (
     <View style={styles.container}>
