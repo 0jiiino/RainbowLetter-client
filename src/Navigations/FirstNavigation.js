@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import * as SecureStore from "expo-secure-store";
 
 import AuthNavigation from "./AuthNavigation";
 import MainNavigation from "./MainNavigation";
