@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 
 import {
   postCertification,
@@ -14,8 +21,13 @@ import {
 import signUpValidation from "../../validation/signUpValidation";
 import CustomButton from "../../components/Buttons/Button";
 import Input from "../../components/TextInput/TextInput";
+import Timer from "../../components/Timer/Timer";
 
 const SignUp = ({ navigation }) => {
+  const mounted = useRef(false);
+  const [minute, setMinute] = useState(3);
+  const [second, setSecond] = useState(0);
+  const [isSend, setIsSend] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [inputs, setInputs] = useState({
@@ -25,6 +37,34 @@ const SignUp = ({ navigation }) => {
     phoneNumber: "",
     certificationCode: "",
   });
+
+  useEffect(() => {
+    mounted.current = true;
+
+    let countdown;
+
+    if (isSend && mounted.current) {
+      countdown = setInterval(() => {
+        if (second > 0) {
+          setSecond(second - 1);
+        }
+
+        if (second === 0) {
+          if (minute === 0) {
+            clearInterval(countdown);
+          } else {
+            setMinute(minute - 1);
+            setSecond(59);
+          }
+        }
+      }, 1000);
+    }
+
+    return () => {
+      mounted.current = false;
+      clearInterval(countdown);
+    };
+  }, [isSend, minute, second]);
 
   const handleSendClick = async () => {
     try {
@@ -40,6 +80,8 @@ const SignUp = ({ navigation }) => {
     } catch {
       setErrorMessage(SERVER_ERROR);
     }
+
+    setIsSend(true);
   };
 
   const handleConfirmClick = async () => {
@@ -87,76 +129,81 @@ const SignUp = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        {successMessage !== "" ? (
-          <Text style={styles.text}>{successMessage}</Text>
-        ) : null}
-        {errorMessage !== "" ? (
-          <Text style={styles.text}>{errorMessage}</Text>
-        ) : null}
-        <Input
-          placeholder="이메일"
-          value={inputs.email}
-          handleInputChange={(event) => setInputs({ ...inputs, email: event })}
-          keyboardType="email-address"
-        />
-        <Input
-          placeholder="비밀번호"
-          value={inputs.password}
-          handleInputChange={(event) =>
-            setInputs({ ...inputs, password: event })
-          }
-          secureTextEntry={true}
-        />
-        <Input
-          placeholder="닉네임"
-          value={inputs.nickname}
-          handleInputChange={(event) =>
-            setInputs({ ...inputs, nickname: event })
-          }
-        />
-        <View style={styles.rowContainer}>
+    <KeyboardAvoidingView style={styles.container}>
+      <ScrollView>
+        <View style={styles.inputContainer}>
+          {successMessage !== "" ? (
+            <Text style={styles.text}>{successMessage}</Text>
+          ) : null}
+          {errorMessage !== "" ? (
+            <Text style={styles.text}>{errorMessage}</Text>
+          ) : null}
           <Input
-            placeholder="휴대폰 번호"
-            value={inputs.phoneNumber}
+            placeholder="이메일"
+            value={inputs.email}
             handleInputChange={(event) =>
-              setInputs({ ...inputs, phoneNumber: event })
+              setInputs({ ...inputs, email: event })
             }
-            keyboardType="number-pad"
+            keyboardType="email-address"
           />
-          <CustomButton
-            text="인증번호 전송"
-            handleClick={handleSendClick}
-            style={styles.button}
+          <Input
+            placeholder="비밀번호"
+            value={inputs.password}
+            handleInputChange={(event) =>
+              setInputs({ ...inputs, password: event })
+            }
+            secureTextEntry={true}
+          />
+          <Input
+            placeholder="닉네임"
+            value={inputs.nickname}
+            handleInputChange={(event) =>
+              setInputs({ ...inputs, nickname: event })
+            }
+          />
+          <View style={styles.rowContainer}>
+            <Input
+              placeholder="휴대폰 번호"
+              value={inputs.phoneNumber}
+              handleInputChange={(event) =>
+                setInputs({ ...inputs, phoneNumber: event })
+              }
+              keyboardType="number-pad"
+            />
+            <CustomButton
+              text="인증번호 전송"
+              handleClick={handleSendClick}
+              style={styles.button}
+            />
+            {isSend ? <Timer minute={minute} second={second} /> : null}
+          </View>
+          <View style={styles.rowContainer}>
+            <Input
+              placeholder="인증번호"
+              value={inputs.certificationCode}
+              handleInputChange={(event) =>
+                setInputs({ ...inputs, certificationCode: event })
+              }
+              keyboardType="number-pad"
+            />
+            <CustomButton
+              text="확인"
+              handleClick={handleConfirmClick}
+              style={styles.button}
+            />
+          </View>
+        </View>
+        <View style={styles.signUpContainer}>
+          <Button
+            title="회원가입"
+            onPress={handleSignUpClick}
+            disabled={successMessage === ""}
+            color="#C7C5A7"
+            style={styles.signUpButton}
           />
         </View>
-        <View style={styles.rowContainer}>
-          <Input
-            placeholder="인증번호"
-            value={inputs.certificationCode}
-            handleInputChange={(event) =>
-              setInputs({ ...inputs, certificationCode: event })
-            }
-            keyboardType="number-pad"
-          />
-          <CustomButton
-            text="확인"
-            handleClick={handleConfirmClick}
-            style={styles.button}
-          />
-        </View>
-      </View>
-      <View style={styles.signUpContainer}>
-        <Button
-          title="회원가입"
-          onPress={handleSignUpClick}
-          disabled={successMessage === ""}
-          color="#C7C5A7"
-          style={styles.signUpButton}
-        />
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
