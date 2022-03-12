@@ -4,16 +4,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import OPTIONS from "../constants/options";
 import OurMailBox from "../screens/Main/OurMailBox/OurMailBoxScreen";
+import Reply from "../screens/Main/OurMailBox/ReplyScreen";
+import LetterDetail from "../screens/Main/OurMailBox/LetterDetailScreen";
 import MyMailBox from "../screens/Main/MyMailBox/MyMailBoxScreen";
-import MyPage from "../screens/Main/MyPage/MyPageScreen";
 import NewAngel from "../screens/Main/MyMailBox/NewAngelScreen";
 import Angel from "../screens/Main/MyMailBox/AngelScreen";
 import LetterList from "../screens/Main/MyMailBox/LetterListScreen";
 import LetterInput from "../screens/Main/MyMailBox/LetterInputScreen";
 import Letter from "../screens/Main/MyMailBox/LetterScreen";
-import LetterDetail from "../screens/Main/OurMailBox/LetterDetailScreen";
-import Reply from "../screens/Main/OurMailBox/ReplyScreen";
+import MyPage from "../screens/Main/MyPage/MyPageScreen";
 import MailboxLetter from "../screens/Main/MyPage/MailboxLetterScreen";
 
 const Tab = createBottomTabNavigator();
@@ -26,44 +27,17 @@ const OurMailBoxStackNavigator = () => (
     <OurMailBoxStack.Screen
       name="OurMailBox"
       component={OurMailBox}
-      options={{
-        title: "🌈 모두의 편지함",
-        headerStyle: {
-          backgroundColor: "#FFFDDD",
-        },
-        headerTintColor: "black",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      options={OPTIONS.OUR_MAILBOX}
     />
     <OurMailBoxStack.Screen
       name="LetterDetail"
       component={LetterDetail}
-      options={{
-        title: "🌈 모두의 편지함",
-        headerStyle: {
-          backgroundColor: "#FFFDDD",
-        },
-        headerTintColor: "black",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      options={OPTIONS.OUR_MAILBOX}
     />
     <OurMailBoxStack.Screen
       name="Reply"
       component={Reply}
-      options={{
-        title: "🌈 모두의 편지함",
-        headerStyle: {
-          backgroundColor: "#FFFDDD",
-        },
-        headerTintColor: "black",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      options={OPTIONS.OUR_MAILBOX}
     />
   </OurMailBoxStack.Navigator>
 );
@@ -73,86 +47,32 @@ const MyMailBoxStackNavigator = () => (
       <MyMailBoxStack.Screen
         name="MyMailBox"
         component={MyMailBox}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
       <MyMailBoxStack.Screen
         name="NewAngel"
         component={NewAngel}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
       <MyMailBoxStack.Screen
         name="Angel"
         component={Angel}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
       <MyMailBoxStack.Screen
         name="LetterList"
         component={LetterList}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
       <MyMailBoxStack.Screen
         name="LetterInput"
         component={LetterInput}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
       <MyMailBoxStack.Screen
         name="Letter"
         component={Letter}
-        options={{
-          title: "🌈 내 편지함",
-          headerStyle: {
-            backgroundColor: "#FFFDDD",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={OPTIONS.MY_MAILBOX}
       />
     </MyMailBoxStack.Navigator>
   </NavigationContainer>
@@ -162,30 +82,12 @@ const MyPageStackNavigator = () => (
     <MyPageStack.Screen
       name="MyPage"
       component={MyPage}
-      options={{
-        title: "🌈 마이 페이지",
-        headerStyle: {
-          backgroundColor: "#FFFDDD",
-        },
-        headerTintColor: "black",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      options={OPTIONS.MY_PAGE}
     />
     <MyPageStack.Screen
       name="MailboxLetter"
       component={MailboxLetter}
-      options={{
-        title: "🌈 마이 페이지",
-        headerStyle: {
-          backgroundColor: "#FFFDDD",
-        },
-        headerTintColor: "black",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      options={OPTIONS.MY_PAGE}
     />
   </MyPageStack.Navigator>
 );

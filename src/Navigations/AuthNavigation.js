@@ -6,6 +6,7 @@ import Login from "../screens/Auth/LoginScreen";
 import Main from "../screens/Auth/FirstScreen";
 import SignUp from "../screens/Auth/SignUpScreen";
 import Success from "../screens/Auth/SuccessScreen";
+import OPTIONS from "../constants/options";
 
 const Stack = createStackNavigator();
 
@@ -21,36 +22,14 @@ const AuthNavigation = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
-          options={{
-            title: "🌈 회원가입",
-            headerStyle: {
-              backgroundColor: "#FFFDDD",
-            },
-            headerTintColor: "black",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
+          options={OPTIONS.SIGN_UP}
         />
         <Stack.Screen
           name="Success"
           component={Success}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: "🌈 로그인",
-            headerStyle: {
-              backgroundColor: "#FFFDDD",
-            },
-            headerTintColor: "black",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
+        <Stack.Screen name="Login" component={Login} options={OPTIONS.LOGIN} />
       </Stack.Navigator>
     </NavigationContainer>
   );
