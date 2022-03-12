@@ -29,7 +29,6 @@ const Login = () => {
         "accessToken",
         JSON.stringify(response.accessToken)
       );
-      await SecureStore.setItemAsync("userInfo", JSON.stringify(inputs));
 
       dispatch(userSlice.actions.login(response));
       setErrorMessage("");
