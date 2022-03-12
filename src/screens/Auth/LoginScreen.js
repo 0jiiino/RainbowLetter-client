@@ -1,12 +1,22 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import * as SecureStore from "expo-secure-store";
 
 import { postLogin } from "../../../api/authApi";
 import { userSlice } from "../../../redux/userSlice";
-import { SERVER_ERROR, WINDOW_WIDTH } from "../../constants/constants";
-import Input from "../../components/TextInput/TextInput";
+import {
+  SERVER_ERROR,
+  WARNING_MESSAGE,
+  WINDOW_HEIGHT,
+  WINDOW_WIDTH,
+} from "../../constants/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,6 +27,18 @@ const Login = () => {
   });
 
   const handleLoginClick = async () => {
+    if (inputs.email === "") {
+      setErrorMessage(WARNING_MESSAGE.EMPTY_EMAIL);
+
+      return;
+    }
+
+    if (inputs.password === "") {
+      setErrorMessage(WARNING_MESSAGE.EMPTY_PASSWORD);
+
+      return;
+    }
+
     try {
       const response = await postLogin(inputs);
 
@@ -40,31 +62,29 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        {errorMessage !== "" ? (
-          <Text style={styles.text}>{errorMessage}</Text>
-        ) : null}
-        <Input
+        <TextInput
           placeholder="이메일"
           value={inputs.email}
-          handleInputChange={(event) => setInputs({ ...inputs, email: event })}
+          onChangeText={(event) => setInputs({ ...inputs, email: event })}
           keyboardType="email-address"
+          style={styles.input}
         />
-        <Input
+        <TextInput
           placeholder="비밀번호"
           value={inputs.password}
-          handleInputChange={(event) =>
-            setInputs({ ...inputs, password: event })
-          }
+          onChangeText={(event) => setInputs({ ...inputs, password: event })}
           secureTextEntry={true}
+          style={styles.input}
         />
-      </View>
-      <View style={styles.loginContainer}>
-        <Button
-          title="로그인"
-          onPress={handleLoginClick}
-          color="#C7C5A7"
+        {errorMessage !== "" ? (
+          <Text style={styles.errorText}>{errorMessage}</Text>
+        ) : null}
+        <TouchableOpacity
           style={styles.loginButton}
-        />
+          onPressOut={handleLoginClick}
+        >
+          <Text style={styles.text}>로그인</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -78,25 +98,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFDDD",
   },
   inputContainer: {
-    marginTop: 100,
+    alignItems: "center",
+    marginTop: 50,
   },
-  text: {
-    marginLeft: 30,
-    marginBottom: 20,
-    color: "red",
+  errorText: {
+    marginVertical: 10,
     fontSize: 15,
     fontWeight: "900",
   },
-  loginContainer: {
-    alignItems: "center",
+  input: {
+    width: WINDOW_WIDTH * 0.6,
+    height: WINDOW_HEIGHT * 0.05,
+    marginVertical: 10,
+    borderWidth: 1.5,
+    borderRadius: 10,
+    borderColor: "#C7C5A7",
+    textAlign: "center",
   },
   loginButton: {
+    justifyContent: "center",
     width: WINDOW_WIDTH * 0.22,
-    height: 30,
-    padding: 4,
-    borderWidth: 1,
-    borderRadius: 10,
-    color: "black",
-    fontSize: 10,
+    height: WINDOW_HEIGHT * 0.05,
+    marginTop: 10,
+    borderRadius: 5,
+    backgroundColor: "#C7C5A7",
+  },
+  text: {
+    textAlign: "center",
+    fontSize: 15,
   },
 });
