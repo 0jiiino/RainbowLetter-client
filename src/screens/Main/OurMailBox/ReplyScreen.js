@@ -7,9 +7,8 @@ import LetterContainer from "../../../components/Letter/LetterDetail";
 import ReplyInput from "../../../components/Letter/ReplyInput";
 import Modal from "../../../components/Modal/Modal";
 import {
-  FAILURE_MESSAGE,
+  MESSAGE,
   MODAL_TITLE,
-  SUCCESS_MESSAGE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../../constants/constants";
@@ -56,7 +55,7 @@ const Reply = ({ route }) => {
           isInputModal={false}
           handleCloseClick={() => setIsSuccess(false)}
           handleConfirmClick={handleConfirmClick}
-          content={SUCCESS_MESSAGE}
+          content={MESSAGE.SUCCESS_MESSAGE}
         />
       ) : null}
       {hasError ? (
@@ -65,7 +64,7 @@ const Reply = ({ route }) => {
           isInputModal={false}
           handleCloseClick={() => setHasError(false)}
           handleConfirmClick={handleConfirmClick}
-          content={FAILURE_MESSAGE}
+          content={MESSAGE.FAILURE_MESSAGE}
         />
       ) : null}
     </View>

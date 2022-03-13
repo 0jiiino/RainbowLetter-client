@@ -14,8 +14,8 @@ import {
   postVerification,
 } from "../../../api/authApi";
 import {
-  SERVER_ERROR,
-  VERIFICATION_SUCCESS,
+  MESSAGE,
+  WARNING_MESSAGE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../constants/constants";
@@ -78,7 +78,7 @@ const SignUp = ({ navigation }) => {
         setErrorMessage("");
       }
     } catch {
-      setErrorMessage(SERVER_ERROR);
+      setErrorMessage(WARNING_MESSAGE.SERVER_ERROR);
     }
 
     setIsSend(true);
@@ -91,14 +91,14 @@ const SignUp = ({ navigation }) => {
       const response = await postVerification(phoneNumber, certificationCode);
 
       if (response.status === 201) {
-        setSuccessMessage(VERIFICATION_SUCCESS);
+        setSuccessMessage(MESSAGE.VERIFICATION_SUCCESS);
       }
 
       if (response.status === 400) {
         setSuccessMessage(response.result);
       }
     } catch {
-      setErrorMessage(SERVER_ERROR);
+      setErrorMessage(WARNING_MESSAGE.SERVER_ERROR);
     }
   };
 
@@ -124,7 +124,7 @@ const SignUp = ({ navigation }) => {
         setErrorMessage(response.result);
       }
     } catch {
-      setErrorMessage(SERVER_ERROR);
+      setErrorMessage(WARNING_MESSAGE.SERVER_ERROR);
     }
   };
 

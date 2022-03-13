@@ -9,7 +9,7 @@ import CircleButton from "../../../components/Buttons/CircleButton";
 import Modal from "../../../components/Modal/Modal";
 import { QUESTIONS, QUESTION_COLORS } from "../../../constants/questions";
 import {
-  KEEPING_MENT,
+  MESSAGE,
   MODAL_TITLE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
@@ -109,7 +109,7 @@ const LetterList = () => {
           title={MODAL_TITLE.LOCKER}
           handleCloseClick={() => setIsClicked(true)}
           handleConfirmClick={handleConfirmClick}
-          content={KEEPING_MENT}
+          content={MESSAGE.KEEPING_MENT}
         />
       ) : null}
     </View>

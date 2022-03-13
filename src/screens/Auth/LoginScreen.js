@@ -12,7 +12,6 @@ import * as SecureStore from "expo-secure-store";
 import { postLogin } from "../../../api/authApi";
 import { userSlice } from "../../../redux/userSlice";
 import {
-  SERVER_ERROR,
   WARNING_MESSAGE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
@@ -55,7 +54,7 @@ const Login = () => {
       dispatch(userSlice.actions.login(response));
       setErrorMessage("");
     } catch {
-      setErrorMessage(SERVER_ERROR);
+      setErrorMessage(WARNING_MESSAGE.SERVER_ERROR);
     }
   };
 
