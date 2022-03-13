@@ -6,7 +6,12 @@ import Carousel from "../../../components/Carousel/Carousel";
 import LetterContainer from "../../../components/Letter/LetterDetail";
 import ReplyInput from "../../../components/Letter/ReplyInput";
 import Modal from "../../../components/Modal/Modal";
-import { FAILURE_MESSAGE, SUCCESS_MESSAGE } from "../../../constants/constants";
+import {
+  FAILURE_MESSAGE,
+  SUCCESS_MESSAGE,
+  WINDOW_HEIGHT,
+  WINDOW_WIDTH,
+} from "../../../constants/constants";
 
 const Reply = ({ route }) => {
   const navigation = useNavigation();
@@ -31,7 +36,7 @@ const Reply = ({ route }) => {
     const isEmpty = Object.keys(item).length;
 
     return isEmpty ? (
-      <LetterContainer letter={item} replyMode={true} />
+      <LetterContainer letter={item} style={styles.letterContainer} />
     ) : (
       <ReplyInput
         id={letter._id}
@@ -73,5 +78,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#FFFDDD",
+  },
+  replyModeContainer: {
+    width: WINDOW_WIDTH * 0.8,
+    height: WINDOW_HEIGHT * 0.7,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginHorizontal: (WINDOW_WIDTH * 0.05) / 2,
+    borderRadius: 10,
+    backgroundColor: "#EEECCC",
   },
 });

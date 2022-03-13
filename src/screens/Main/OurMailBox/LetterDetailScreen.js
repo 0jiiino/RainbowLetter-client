@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 import Button from "../../../components/Buttons/Button";
 import LetterContainer from "../../../components/Letter/LetterDetail";
-import { WINDOW_WIDTH } from "../../../constants/constants";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../../constants/constants";
 
 const LetterDetail = ({ route }) => {
   const { letter } = route.params;
@@ -19,7 +19,7 @@ const LetterDetail = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <LetterContainer letter={letter} />
+      <LetterContainer letter={letter} style={styles.letterContainer} />
       {isCreator ? null : (
         <Button
           text="답장하기"
@@ -37,6 +37,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFFDDD",
+  },
+  letterContainer: {
+    width: WINDOW_WIDTH * 0.9,
+    height: WINDOW_HEIGHT * 0.7,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10,
+    backgroundColor: "#EEECCC",
   },
   button: {
     justifyContent: "center",

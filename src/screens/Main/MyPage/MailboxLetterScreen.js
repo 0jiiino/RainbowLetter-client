@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 
 import Carousel from "../../../components/Carousel/Carousel";
-import ColorLetter from "../../../components/Letter/ColorLetter";
+import LetterContainer from "../../../components/Letter/LetterDetail";
 import { QUESTION_COLORS } from "../../../constants/questions";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "../../../constants/constants";
 
 const MailboxLetter = () => {
   const { letters } = useSelector((state) => state.mailbox);
@@ -21,7 +22,12 @@ const MailboxLetter = () => {
     }
     const color = QUESTION_COLORS[index];
 
-    return <ColorLetter letter={item} color={color} />;
+    return (
+      <LetterContainer
+        letter={item}
+        style={{ ...styles.letterContainer, backgroundColor: color }}
+      />
+    );
   };
 
   return (
@@ -37,5 +43,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFDDD",
+  },
+  letterContainer: {
+    width: WINDOW_WIDTH * 0.8,
+    height: WINDOW_HEIGHT * 0.7,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginHorizontal: WINDOW_WIDTH * 0.025,
+    borderRadius: 10,
   },
 });
