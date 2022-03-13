@@ -41,9 +41,7 @@ const OurMailBox = () => {
       ) : (
         <FlatList
           ListHeaderComponent={
-            <View style={styles.headerContainer}>
-              <Text style={styles.text}>누군가의 편지에 답장해볼까요?</Text>
-            </View>
+            <Text style={styles.text}>누군가의 편지에 답장해볼까요?</Text>
           }
           data={letters}
           renderItem={renderCard}
@@ -64,12 +62,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FFFDDD",
   },
-  headerContainer: {
-    alignItems: "center",
-  },
   text: {
     marginVertical: 10,
     fontSize: 15,
     fontWeight: "600",
+    textAlign: "center",
   },
 });

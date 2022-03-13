@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -11,7 +11,7 @@ const LetterDetail = ({ route }) => {
   const { letter } = route.params;
   const navigation = useNavigation();
   const { nickname } = useSelector((state) => state.user);
-  const [isCreator, setIsCreator] = useState(nickname === letter.creator);
+  const isCreator = nickname === letter.creator;
 
   const handleReplyClick = () => {
     navigation.navigate("Reply", { letter });

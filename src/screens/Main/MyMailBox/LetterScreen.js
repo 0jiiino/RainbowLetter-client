@@ -8,11 +8,11 @@ import CircleButton from "../../../components/Buttons/CircleButton";
 import useDidMountEffect from "../../../utils/useDidMountEffect";
 
 const Letter = ({ route }) => {
-  let timer;
   const { color, question, letter } = route.params;
   const dispatch = useDispatch();
   const [echo, setEcho] = useState(letter.echo);
   const [finalEcho, setFinalEcho] = useState(letter.echo);
+  let timer;
 
   const requestServer = () => {
     const echoInfo = { echo: finalEcho, id: letter._id };
