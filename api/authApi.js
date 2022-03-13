@@ -1,7 +1,7 @@
-import { SERVER_URI } from "@env";
+import { SERVER_END_POINT } from "@env";
 
 const postCertification = async (phoneNumber) => {
-  const response = await fetch(`${SERVER_URI}/users/certification`, {
+  const response = await fetch(`${SERVER_END_POINT}/users/certification`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ const postCertification = async (phoneNumber) => {
 };
 
 const postVerification = async (phoneNumber, code) => {
-  const response = await fetch(`${SERVER_URI}/users/verification`, {
+  const response = await fetch(`${SERVER_END_POINT}/users/verification`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const postVerification = async (phoneNumber, code) => {
 };
 
 const postSignUp = async (userInfo) => {
-  const response = await fetch(`${SERVER_URI}/users/signUp`, {
+  const response = await fetch(`${SERVER_END_POINT}/users/signUp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const postSignUp = async (userInfo) => {
 };
 
 const postLogin = async (loginInfo) => {
-  const response = await fetch(`${SERVER_URI}/users/login`, {
+  const response = await fetch(`${SERVER_END_POINT}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

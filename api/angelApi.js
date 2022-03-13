@@ -1,4 +1,4 @@
-import { SERVER_URI } from "@env";
+import { SERVER_END_POINT } from "@env";
 import * as SecureStore from "expo-secure-store";
 
 export const postNewAngel = async (creationInfo) => {
@@ -6,7 +6,7 @@ export const postNewAngel = async (creationInfo) => {
     await SecureStore.getItemAsync("accessToken")
   ).replaceAll('"', "");
 
-  const response = await fetch(`${SERVER_URI}/angels`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels`, {
     method: "POST",
     headers: {
       Authorization: accessToken,
@@ -23,7 +23,7 @@ export const getAngelLetters = async (id) => {
     await SecureStore.getItemAsync("accessToken")
   ).replaceAll('"', "");
 
-  const response = await fetch(`${SERVER_URI}/angels/${id}`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels/${id}`, {
     method: "GET",
     headers: {
       Authorization: accessToken,
@@ -41,7 +41,7 @@ export const patchAngel = async (id) => {
 
   const activationInfo = { activation: false };
 
-  const response = await fetch(`${SERVER_URI}/angels/${id}`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels/${id}`, {
     method: "PATCH",
     headers: {
       Authorization: accessToken,
@@ -58,7 +58,7 @@ export const postLetter = async (letterInfo) => {
     await SecureStore.getItemAsync("accessToken")
   ).replaceAll('"', "");
 
-  const response = await fetch(`${SERVER_URI}/angels/letters`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels/letters`, {
     method: "POST",
     headers: {
       Authorization: accessToken,
@@ -75,7 +75,7 @@ export const getMailboxAngels = async (id) => {
     await SecureStore.getItemAsync("accessToken")
   ).replaceAll('"', "");
 
-  const response = await fetch(`${SERVER_URI}/angels/users/${id}`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels/users/${id}`, {
     method: "GET",
     headers: {
       Authorization: accessToken,
@@ -92,7 +92,7 @@ export const deleteAngel = async (angelId, userId) => {
   ).replaceAll('"', "");
 
   const response = await fetch(
-    `${SERVER_URI}/angels/${angelId}/users/${userId}`,
+    `${SERVER_END_POINT}/angels/${angelId}/users/${userId}`,
     {
       method: "DELETE",
       headers: {
@@ -110,7 +110,7 @@ export const getMailboxLetters = async (id) => {
     await SecureStore.getItemAsync("accessToken")
   ).replaceAll('"', "");
 
-  const response = await fetch(`${SERVER_URI}/angels/${id}/letters`, {
+  const response = await fetch(`${SERVER_END_POINT}/angels/${id}/letters`, {
     method: "GET",
     headers: {
       Authorization: accessToken,
