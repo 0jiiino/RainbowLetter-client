@@ -12,11 +12,13 @@ const Card = ({ letter, onPress }) => {
       <View style={styles.header}>
         <Text>{creator} 로부터...</Text>
       </View>
-      <View style={styles.contentContainer}>
-        <Text style={styles.content} ellipsizeMode="tail" numberOfLines={5}>
-          {content}
-        </Text>
-      </View>
+      <Text
+        style={styles.contentContainer}
+        ellipsizeMode="tail"
+        numberOfLines={5}
+      >
+        {content}
+      </Text>
       <View style={styles.tail}>
         <TouchableOpacity style={styles.buttonContainer} onPressOut={onPress}>
           <Text style={styles.text}>더 읽어보기</Text>
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 6,
-    justifyContent: "center",
+    textAlignVertical: "center",
   },
   tail: {
     flex: 1.5,

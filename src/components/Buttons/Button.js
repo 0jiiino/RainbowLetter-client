@@ -8,9 +8,7 @@ const Button = ({ text, handleClick, style, disabled = false }) => {
       style={style}
       disabled={disabled}
     >
-      <View>
-        <Text style={styles.text}>{text}</Text>
-      </View>
+      <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
 };
