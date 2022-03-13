@@ -46,9 +46,11 @@ const Letter = ({ route }) => {
       </View>
       <View style={styles.letterContainer}>
         <Text style={styles.title}>{letter.title}</Text>
-        <ScrollView>
-          <Text style={styles.content}>{letter.content}</Text>
-        </ScrollView>
+        <View style={styles.content}>
+          <ScrollView>
+            <Text>{letter.content}</Text>
+          </ScrollView>
+        </View>
       </View>
     </View>
   );
