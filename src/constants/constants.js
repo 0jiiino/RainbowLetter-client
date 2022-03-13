@@ -3,7 +3,20 @@ import { Dimensions } from "react-native";
 const WINDOW_WIDTH = Dimensions.get("window").width;
 const WINDOW_HEIGHT = Dimensions.get("window").height;
 
-const SERVER_ERROR = "서버가 불안정합니다.\n잠시 후에 다시 시도해주세요.";
+const WARNING_MESSAGE = {
+  EMPTY_EMAIL: "이메일을 입력해주세요",
+  EMPTY_PASSWORD: "비밀번호를 입력해주세요",
+  SERVER_ERROR: "서버가 불안정합니다.\n잠시 후에 다시 시도해주세요.",
+};
+
+const MODAL_TITLE = {
+  LOCKER: "보관함 저장",
+  NEW_ANGEL: "새로운 천사 생성",
+  ERROR: "오류",
+  SEND_SUCCESS: "전송 성공",
+  SEND_FAIL: "전송 실패",
+};
+
 const VERIFICATION_SUCCESS = "인증에 성공하였습니다.";
 
 const KEEPING_MENT =
@@ -17,9 +30,10 @@ const FAILURE_MESSAGE =
 export {
   WINDOW_WIDTH,
   WINDOW_HEIGHT,
-  SERVER_ERROR,
   VERIFICATION_SUCCESS,
   KEEPING_MENT,
   SUCCESS_MESSAGE,
   FAILURE_MESSAGE,
+  WARNING_MESSAGE,
+  MODAL_TITLE,
 };

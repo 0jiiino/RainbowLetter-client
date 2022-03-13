@@ -8,6 +8,7 @@ import ReplyInput from "../../../components/Letter/ReplyInput";
 import Modal from "../../../components/Modal/Modal";
 import {
   FAILURE_MESSAGE,
+  MODAL_TITLE,
   SUCCESS_MESSAGE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
@@ -51,20 +52,20 @@ const Reply = ({ route }) => {
       <Carousel data={data} renderItem={renderItem} />
       {isSuccess ? (
         <Modal
+          title={MODAL_TITLE.SEND_SUCCESS}
           isInputModal={false}
           handleCloseClick={() => setIsSuccess(false)}
           handleConfirmClick={handleConfirmClick}
           content={SUCCESS_MESSAGE}
-          title="전송 완료"
         />
       ) : null}
       {hasError ? (
         <Modal
+          title={MODAL_TITLE.SEND_FAIL}
           isInputModal={false}
           handleCloseClick={() => setHasError(false)}
           handleConfirmClick={handleConfirmClick}
           content={FAILURE_MESSAGE}
-          title="전송 실패"
         />
       ) : null}
     </View>

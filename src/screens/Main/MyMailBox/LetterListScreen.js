@@ -10,6 +10,7 @@ import Modal from "../../../components/Modal/Modal";
 import { QUESTIONS, QUESTION_COLORS } from "../../../constants/questions";
 import {
   KEEPING_MENT,
+  MODAL_TITLE,
   WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../../constants/constants";
@@ -105,7 +106,7 @@ const LetterList = () => {
       </View>
       {isClicked ? (
         <Modal
-          title="보관함 저장"
+          title={MODAL_TITLE.LOCKER}
           handleCloseClick={() => setIsClicked(true)}
           handleConfirmClick={handleConfirmClick}
           content={KEEPING_MENT}

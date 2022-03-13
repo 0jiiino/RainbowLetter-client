@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
 import { fetchNewAngel } from "../../../../redux/userSlice";
+import { MODAL_TITLE } from "../../../constants/constants";
 import Modal from "../../../components/Modal/Modal";
 
 const NewAngel = () => {
@@ -37,7 +38,7 @@ const NewAngel = () => {
       </Text>
       {isClicked ? (
         <Modal
-          title="새로운 천사 생성"
+          title={MODAL_TITLE.NEW_ANGEL}
           placehodler="천사의 이름을 입력하세요"
           handleCloseClick={() => setIsClicked(false)}
           handleInputChange={(event) => setName(event)}

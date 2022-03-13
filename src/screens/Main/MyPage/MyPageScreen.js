@@ -9,9 +9,9 @@ import {
   mailboxSlice,
 } from "../../../../redux/mailboxSlice";
 import { deleteAngel } from "../../../../api/angelApi";
+import { MODAL_TITLE, WARNING_MESSAGE } from "../../../constants/constants";
 import Angel from "../../../components/Angel/Angel";
 import Modal from "../../../components/Modal/Modal";
-import { WARNING_MESSAGE } from "../../../constants/constants";
 
 const MyPage = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const MyPage = () => {
       ) : null}
       {hasError ? (
         <Modal
-          title="오류"
+          title={MODAL_TITLE.ERROR}
           handleCloseClick={() => setHasError(false)}
           handleConfirmClick={() => setHasError(false)}
           content={WARNING_MESSAGE.SERVER_ERROR}
