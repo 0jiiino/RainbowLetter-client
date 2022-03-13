@@ -15,8 +15,8 @@ import {
 } from "../../../constants/constants";
 
 const LetterList = () => {
-  const navigation = useNavigation();
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const [isClicked, setIsClicked] = useState(false);
   const { angel, letters, isLoading } = useSelector((state) => state.user);
   const isDisabled = letters.length !== 7;
@@ -35,14 +35,6 @@ const LetterList = () => {
     navigation.navigate("LetterInput", { color, question: QUESTIONS[index] });
   };
 
-  const handleKeepClick = () => {
-    setIsClicked(true);
-  };
-
-  const handleCloseClick = () => {
-    setIsClicked(false);
-  };
-
   const handleConfirmClick = () => {
     dispatch(fetchAngel(angel.id));
 
@@ -57,7 +49,7 @@ const LetterList = () => {
         <TouchableOpacity
           style={isDisabled ? styles.disabledButton : styles.button}
           disabled={isDisabled}
-          onPressOut={handleKeepClick}
+          onPressOut={() => setIsClicked(true)}
         >
           <Text style={styles.buttonText}>보관함에 저장</Text>
         </TouchableOpacity>
@@ -114,7 +106,7 @@ const LetterList = () => {
       {isClicked ? (
         <Modal
           title="보관함 저장"
-          handleCloseClick={handleCloseClick}
+          handleCloseClick={() => setIsClicked(true)}
           handleConfirmClick={handleConfirmClick}
           content={KEEPING_MENT}
         />

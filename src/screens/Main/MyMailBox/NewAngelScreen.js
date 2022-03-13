@@ -10,17 +10,9 @@ import Modal from "../../../components/Modal/Modal";
 const NewAngel = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const { id, isLoading } = useSelector((state) => state.user);
-  const [isClicked, setIsClicked] = useState(false);
   const [name, setName] = useState("");
-
-  const handlePlusClick = () => {
-    setIsClicked(true);
-  };
-
-  const handleInputChange = (event) => {
-    setName(event);
-  };
+  const [isClicked, setIsClicked] = useState(false);
+  const { id, isLoading } = useSelector((state) => state.user);
 
   const handleSaveClick = () => {
     dispatch(fetchNewAngel({ id, name }));
@@ -31,10 +23,6 @@ const NewAngel = () => {
     }
   };
 
-  const handleCloseClick = () => {
-    setIsClicked(false);
-  };
-
   return (
     <View style={styles.container}>
       <AntDesign.Button
@@ -42,7 +30,7 @@ const NewAngel = () => {
         size={50}
         backgroundColor="#FFFDDD"
         color="black"
-        onPressOut={handlePlusClick}
+        onPressOut={() => setIsClicked(true)}
       />
       <Text style={styles.text}>
         새로운 천사를 생성하고 싶으시면 눌러주세요 💌
@@ -51,8 +39,8 @@ const NewAngel = () => {
         <Modal
           title="새로운 천사 생성"
           placehodler="천사의 이름을 입력하세요"
-          handleCloseClick={handleCloseClick}
-          handleInputChange={handleInputChange}
+          handleCloseClick={() => setIsClicked(false)}
+          handleInputChange={(event) => setName(event)}
           handleConfirmClick={handleSaveClick}
           isInputModal={true}
         />
