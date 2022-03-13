@@ -3,9 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   KeyboardAvoidingView,
   ScrollView,
+  TextInput,
 } from "react-native";
 
 import {
@@ -16,11 +16,11 @@ import {
 import {
   SERVER_ERROR,
   VERIFICATION_SUCCESS,
+  WINDOW_HEIGHT,
   WINDOW_WIDTH,
 } from "../../constants/constants";
 import signUpValidation from "../../validation/signUpValidation";
-import CustomButton from "../../components/Buttons/Button";
-import Input from "../../components/TextInput/TextInput";
+import Button from "../../components/Buttons/Button";
 import Timer from "../../components/Timer/Timer";
 
 const SignUp = ({ navigation }) => {
@@ -138,67 +138,65 @@ const SignUp = ({ navigation }) => {
           {errorMessage !== "" ? (
             <Text style={styles.text}>{errorMessage}</Text>
           ) : null}
-          <Input
+          <TextInput
             placeholder="이메일"
             value={inputs.email}
-            handleInputChange={(event) =>
-              setInputs({ ...inputs, email: event })
-            }
+            onChangeText={(event) => setInputs({ ...inputs, email: event })}
             keyboardType="email-address"
+            style={styles.input}
           />
-          <Input
+          <TextInput
             placeholder="비밀번호"
             value={inputs.password}
-            handleInputChange={(event) =>
-              setInputs({ ...inputs, password: event })
-            }
+            onChangeText={(event) => setInputs({ ...inputs, password: event })}
             secureTextEntry={true}
+            style={styles.input}
           />
-          <Input
+          <TextInput
             placeholder="닉네임"
             value={inputs.nickname}
-            handleInputChange={(event) =>
-              setInputs({ ...inputs, nickname: event })
+            onChangeText={(event) => setInputs({ ...inputs, nickname: event })}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="휴대폰 번호"
+            value={inputs.phoneNumber}
+            onChangeText={(event) =>
+              setInputs({ ...inputs, phoneNumber: event })
             }
+            keyboardType="number-pad"
+            style={styles.input}
           />
           <View style={styles.rowContainer}>
-            <Input
-              placeholder="휴대폰 번호"
-              value={inputs.phoneNumber}
-              handleInputChange={(event) =>
-                setInputs({ ...inputs, phoneNumber: event })
-              }
-              keyboardType="number-pad"
-            />
-            <CustomButton
+            <Button
               text="인증번호 전송"
               handleClick={handleSendClick}
               style={styles.button}
             />
-            {isSend ? <Timer minute={minute} second={second} /> : null}
+            {isSend ? (
+              <Timer minute={minute} second={second} style={styles.text} />
+            ) : null}
           </View>
           <View style={styles.rowContainer}>
-            <Input
+            <TextInput
               placeholder="인증번호"
               value={inputs.certificationCode}
-              handleInputChange={(event) =>
+              onChangeText={(event) =>
                 setInputs({ ...inputs, certificationCode: event })
               }
               keyboardType="number-pad"
+              style={styles.input}
             />
-            <CustomButton
+            <Button
               text="확인"
               handleClick={handleConfirmClick}
               style={styles.button}
             />
           </View>
-        </View>
-        <View style={styles.signUpContainer}>
           <Button
-            title="회원가입"
-            onPress={handleSignUpClick}
+            text="회원가입"
+            handleClick={handleSignUpClick}
             disabled={successMessage === ""}
-            color="#C7C5A7"
             style={styles.signUpButton}
           />
         </View>
@@ -215,35 +213,46 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFDDD",
   },
   inputContainer: {
-    marginTop: 100,
+    alignItems: "center",
+    marginVertical: 50,
   },
   rowContainer: {
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    width: WINDOW_WIDTH * 0.6,
+    height: WINDOW_HEIGHT * 0.05,
+    marginVertical: 10,
+    borderWidth: 1.5,
+    borderRadius: 10,
+    borderColor: "#C7C5A7",
+    textAlign: "center",
   },
   button: {
+    justifyContent: "center",
     width: WINDOW_WIDTH * 0.22,
-    height: 30,
-    padding: 4,
-    marginLeft: 10,
+    height: WINDOW_HEIGHT * 0.05,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderRadius: 5,
     backgroundColor: "#C7C5A7",
     fontSize: 10,
   },
   signUpButton: {
+    justifyContent: "center",
     width: WINDOW_WIDTH * 0.22,
-    height: 30,
-    padding: 4,
-    borderWidth: 1,
-    borderRadius: 10,
+    height: WINDOW_HEIGHT * 0.05,
+    marginTop: 25,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    backgroundColor: "#C7C5A7",
     fontSize: 10,
   },
-  signUpContainer: {
-    alignItems: "center",
-  },
   text: {
-    marginLeft: 30,
-    marginBottom: 20,
-    color: "red",
+    textAlign: "center",
+    textAlignVertical: "center",
     fontSize: 15,
-    fontWeight: "900",
   },
 });
