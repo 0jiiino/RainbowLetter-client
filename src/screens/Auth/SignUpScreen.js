@@ -37,11 +37,10 @@ const SignUp = ({ navigation }) => {
     phoneNumber: "",
     certificationCode: "",
   });
+  let countdown;
 
   useEffect(() => {
     mounted.current = true;
-
-    let countdown;
 
     if (isSend && mounted.current) {
       countdown = setInterval(() => {
@@ -72,6 +71,7 @@ const SignUp = ({ navigation }) => {
 
       if (response.status === 400) {
         setErrorMessage(response.result);
+        return;
       }
 
       if (response.status === 201) {
@@ -92,6 +92,7 @@ const SignUp = ({ navigation }) => {
 
       if (response.status === 201) {
         setSuccessMessage(MESSAGE.VERIFICATION_SUCCESS);
+        clearInterval(countdown);
       }
 
       if (response.status === 400) {
@@ -167,32 +168,28 @@ const SignUp = ({ navigation }) => {
             keyboardType="number-pad"
             style={styles.input}
           />
-          <View style={styles.rowContainer}>
-            <Button
-              text="인증번호 전송"
-              handleClick={handleSendClick}
-              style={styles.button}
-            />
-            {isSend ? (
-              <Timer minute={minute} second={second} style={styles.text} />
-            ) : null}
-          </View>
-          <View style={styles.rowContainer}>
-            <TextInput
-              placeholder="인증번호"
-              value={inputs.certificationCode}
-              onChangeText={(event) =>
-                setInputs({ ...inputs, certificationCode: event })
-              }
-              keyboardType="number-pad"
-              style={styles.input}
-            />
-            <Button
-              text="확인"
-              handleClick={handleConfirmClick}
-              style={styles.button}
-            />
-          </View>
+          <Button
+            text="인증번호 전송"
+            handleClick={handleSendClick}
+            style={styles.button}
+          />
+          {isSend ? (
+            <Timer minute={minute} second={second} style={styles.text} />
+          ) : null}
+          <TextInput
+            placeholder="인증번호"
+            value={inputs.certificationCode}
+            onChangeText={(event) =>
+              setInputs({ ...inputs, certificationCode: event })
+            }
+            keyboardType="number-pad"
+            style={styles.input}
+          />
+          <Button
+            text="확인"
+            handleClick={handleConfirmClick}
+            style={styles.button}
+          />
           <Button
             text="회원가입"
             handleClick={handleSignUpClick}

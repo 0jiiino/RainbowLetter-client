@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "front",
+    "name": "무지개 편지",
     "slug": "front",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Images/rainbow.png",
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./assets/Images/rainbow.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFFDDD"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,9 +18,11 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rainbowLetter.rainbowLetter",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/Images/rainbow.png",
+        "backgroundColor": "#FFFDDD"
       }
     },
     "web": {

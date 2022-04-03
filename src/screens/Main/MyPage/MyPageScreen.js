@@ -22,9 +22,7 @@ const MyPage = () => {
   const { angels, isLoading } = useSelector((state) => state.mailbox);
 
   useEffect(() => {
-    if (!angels.length) {
-      dispatch(fetchMailboxAngels(id));
-    }
+    dispatch(fetchMailboxAngels(id));
   }, [isFocused]);
 
   const handleAngelClick = (angelId) => {

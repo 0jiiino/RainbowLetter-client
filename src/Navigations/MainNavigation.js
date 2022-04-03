@@ -41,6 +41,7 @@ const OurMailBoxStackNavigator = () => (
     />
   </OurMailBoxStack.Navigator>
 );
+
 const MyMailBoxStackNavigator = () => (
   <NavigationContainer independent={true}>
     <MyMailBoxStack.Navigator>
@@ -77,6 +78,7 @@ const MyMailBoxStackNavigator = () => (
     </MyMailBoxStack.Navigator>
   </NavigationContainer>
 );
+
 const MyPageStackNavigator = () => (
   <MyPageStack.Navigator>
     <MyPageStack.Screen
@@ -92,7 +94,7 @@ const MyPageStackNavigator = () => (
   </MyPageStack.Navigator>
 );
 
-function MainNavigation() {
+const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -133,6 +135,6 @@ function MainNavigation() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default MainNavigation;

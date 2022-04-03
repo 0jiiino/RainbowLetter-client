@@ -107,7 +107,7 @@ const LetterList = () => {
       {isClicked ? (
         <Modal
           title={MODAL_TITLE.LOCKER}
-          handleCloseClick={() => setIsClicked(true)}
+          handleCloseClick={() => setIsClicked(false)}
           handleConfirmClick={handleConfirmClick}
           content={MESSAGE.KEEPING_MENT}
         />

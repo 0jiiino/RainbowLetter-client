@@ -79,6 +79,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FFFDDD",
   },
+  letterContainer: {
+    width: WINDOW_WIDTH * 0.8,
+    height: WINDOW_HEIGHT * 0.7,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginHorizontal: WINDOW_WIDTH * 0.025,
+    borderRadius: 10,
+    backgroundColor: "#EEECCC",
+  },
   replyModeContainer: {
     width: WINDOW_WIDTH * 0.8,
     height: WINDOW_HEIGHT * 0.7,
